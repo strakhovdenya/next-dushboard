@@ -1,9 +1,14 @@
-/** @type {import('next').NextConfig} */
+import withBundleAnalyzer from '@next/bundle-analyzer';
 
-const nextConfig = {
-    experimental: {
-      ppr: 'incremental',
-    },
-  };
+/** @type {import('next').NextConfig} */
+const nextConfig = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+})({
+  experimental: {
+    ppr: 'incremental',
+  },
+  reactStrictMode: true,
+});
 
 export default nextConfig;
+
